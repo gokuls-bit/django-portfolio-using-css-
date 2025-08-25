@@ -1,0 +1,9 @@
+# requirements.txt
+django
+django-tailwind
+python-decouple
+django-browser-reload
+
+
+# myypro1/settings.py
+

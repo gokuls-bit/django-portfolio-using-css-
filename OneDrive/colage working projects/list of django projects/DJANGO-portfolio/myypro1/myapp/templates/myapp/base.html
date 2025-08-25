@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The professional portfolio of Gokul Sant, a full-stack developer and innovator.">
+    <title>Gokul Sant | Full-Stack Developer</title>
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}">
+    
+    <!-- IonIcons for social and UI icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+
+    <!-- Custom Cursor Element -->
+    <div class="cursor"></div>
+
+    <!-- Navbar Partial -->
+    {% include 'myapp/_navbar.html' %}
+
+    <!-- Main Content Block -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer Partial -->
+    {% include 'myapp/_footer.html' %}
+    
+    <!-- Inline JavaScript for All Animations & Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const header = document.querySelector('.header');
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            // --- Header Scroll Effect ---
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    header.classList.toggle('scrolled', window.scrollY > 50);
+                });
+            }
+
+            // --- Mobile Menu Toggle ---
+            if (mobileMenuButton && mobileNav) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileNav.classList.toggle('is-open');
+                    mobileMenuButton.classList.toggle('is-open');
+                });
+            }
+
+            // --- Close mobile menu when a link is clicked ---
+            if (mobileNav && mobileMenuButton) {
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileNav.classList.remove('is-open');
+                        mobileMenuButton.classList.remove('is-open');
+                    });
+                });
+            }
+
+            // --- Active Link Highlighting on Scroll ---
+            const activateNavLink = () => {
+                let currentSection = '';
+                const scrollY = window.pageYOffset;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150;
+                    if (scrollY >= sectionTop) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+            
+            if (sections.length > 0 && navLinks.length > 0) {
+                window.addEventListener('scroll', activateNavLink);
+                activateNavLink();
+            }
+
+            // --- Scroll Reveal Animation ---
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        });
+    </script>
+
+</body>
+</html>
