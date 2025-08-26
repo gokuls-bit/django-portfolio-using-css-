@@ -1,21 +1,214 @@
-ai-research-companion/
-│── backend/
-│   ├── summarizer.py       # Transformer-based summarization
-│   ├── qa_engine.py        # Embedding + semantic search + LLM
-│   ├── sentiment.py        # Sentiment/keywords extraction
-│   └── utils.py            # Preprocessing helpers
-│
-│── models/
-│   ├── fine_tuned_summarizer/   # Your trained/fine-tuned model
-│   └── embeddings/              # FAISS / sentence-transformers
-│
-│── frontend/
-│   ├── app.py             # Streamlit/Gradio UI
-│   ├── components.css     # Styling
-│
-│── data/
-│   └── sample_papers/     # Example PDFs/articles
-│
-│── requirements.txt
-│── README.md
-│── LICENSE
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ==========================================================================
+   1. HERO SECTION
+   ========================================================================== -->
+<section id="home" class="hero-split">
+    <!-- Innovator Pane -->
+    <div class="hero-pane hero-pane--dark">
+        <div class="hero-content reveal">
+            <h1>Problem Solver & Innovator</h1>
+            <p>Exploring the intersection of AI, Architecture, Economics, and Technology to build impactful, human-centered solutions.</p>
+        </div>
+    </div>
+
+    <!-- Developer Pane -->
+    <div class="hero-pane hero-pane--light">
+        <div class="hero-content reveal" style="animation-delay: 200ms;">
+            <h1>Full-Stack Developer | AI Enthusiast | Economics & Infrastructure Explorer</h1>
+            <div class="hero-photo-placeholder">
+                <img src="{% static 'myapp/images/gokulsant.png' %}" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/150x150/E5E7EB/4A5568?text=GS';" 
+                     alt="A professional headshot of Gokul Sant">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   2. ABOUT ME SECTION
+   ========================================================================== -->
+<section id="about" class="section--light">
+    <div class="container reveal">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+            As an AI Engineering student, I am passionate about connecting the dots between technology, economics, architecture, and design. My core expertise lies in full-stack development, AI/ML engineering, and data-driven problem-solving. I thrive on the challenge of building scalable, efficient solutions and am constantly exploring innovation across diverse fields, from critical infrastructure to the emerging world of fashion-tech. My goal is to leverage technology to create systems that are not only functional but also elegant and impactful.
+        </p>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   3. SKILLS SECTION
+   ========================================================================== -->
+<section id="skills" style="background-color: var(--color-background-dark);">
+    <div class="container reveal">
+        <h2 class="section-title" style="color: white;">Technical Skills</h2>
+        <div class="card-grid">
+            <div class="project-card"><h3 class="card__title">AI/ML</h3><ul class="card__list"><li>Scikit-learn</li><li>TensorFlow/PyTorch</li><li>OpenCV</li></ul></div>
+            <div class="project-card"><h3 class="card__title">Web Development</h3><ul class="card__list"><li>HTML5 & CSS3</li><li>React.js, Next.js</li><li>Node.js, Express.js</li></ul></div>
+            <div class="project-card"><h3 class="card__title">Databases</h3><ul class="card__list"><li>MongoDB</li><li>MySQL</li><li>Firebase</li></ul></div>
+            <div class="project-card"><h3 class="card__title">Tools & Other</h3><ul class="card__list"><li>Git/GitHub</li><li>Figma</li><li>Docker</li></ul></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   4. EXPERIENCE SECTION
+   ========================================================================== -->
+<section id="experience" class="section--light">
+    <div class="container reveal">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="timeline-item__title">Web Development Intern</h3>
+                <p class="timeline-item__subtitle">Micro Information Technology Services</p>
+                <p class="timeline-item__date">May–Jun 2025</p>
+                <ul class="card__list">
+                    <li>Developed and maintained full-stack features using React.js and Node.js.</li>
+                    <li>Built responsive, user-friendly interfaces and implemented robust authentication systems.</li>
+                    <li>Collaborated with backend teams for API integration and utilized GitHub for version control.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-item__title">Co-Founder & Secretary</h3>
+                <p class="timeline-item__subtitle">PROTO-X-VISION (MSME Registered Startup)</p>
+                <p class="timeline-item__date">2024–Present</p>
+                <ul class="card__list">
+                    <li>Organized and managed hackathons, mentorship programs, and innovation challenges.</li>
+                    <li>Played a key role in building a vibrant startup ecosystem within the university.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   5. PROJECTS SECTION
+   ========================================================================== -->
+<section id="projects" style="background-color: var(--color-background-dark);">
+    <div class="container reveal">
+        <h2 class="section-title" style="color: white;">Projects</h2>
+        <div class="card-grid">
+            <!-- Row 1 -->
+            <div class="project-card"><p class="project-card__tech">WordPress</p><h3 class="card__title">Stitch & Style</h3><p>E-commerce site with product pages & payment gateway.</p></div>
+            <div class="project-card"><p class="project-card__tech">React.js + PHP</p><h3 class="card__title">E-Notice Board</h3><p>Digital notice board for real-time campus communication.</p></div>
+            <div class="project-card"><p class="project-card__tech">Django + Chart.js</p><h3 class="card__title">Finance Tracker</h3><p>Expense tracker with analytics dashboards.</p></div>
+            <!-- Row 2 -->
+            <div class="project-card"><p class="project-card__tech">MERN + Socket.IO</p><h3 class="card__title">Furnimart Chatbox</h3><p>Real-time chat app with categorized users.</p></div>
+            <div class="project-card"><p class="project-card__tech">Next.js + MongoDB</p><h3 class="card__title">Bhagwat Praptati</h3><p>Chant-tracking app with progress charts & reminders.</p></div>
+            <div class="project-card"><p class="project-card__tech">Next.js + Vite</p><h3 class="card__title">Password Generator</h3><p>Secure password generator with strength meter.</p></div>
+            <!-- Row 3 -->
+            <div class="project-card"><p class="project-card__tech">React + Node.js</p><h3 class="card__title">Project Management Tool</h3><p>Kanban-style team management tool.</p></div>
+            <div class="project-card"><p class="project-card__tech">React + Node.js</p><h3 class="card__title">E-Commerce Website</h3><p>Full-stack store with user authentication.</p></div>
+            <div class="project-card"><p class="project-card__tech">Next.js + Tailwind</p><h3 class="card__title">Portfolio Website</h3><p>A responsive personal portfolio.</p></div>
+            <!-- Row 4 -->
+            <div class="project-card"><p class="project-card__tech">TensorFlow</p><h3 class="card__title">DCGAN Fashion-MNIST</h3><p>GAN generating synthetic fashion items.</p></div>
+            <div class="project-card"><p class="project-card__tech">Keras</p><h3 class="card__title">CNN Image Classifier</h3><p>Custom dataset classification with a CNN.</p></div>
+            <div class="project-card"><p class="project-card__tech">LLM App</p><h3 class="card__title">AI Reintegration Guide</h3><p>Chatbot for refugee reintegration programs.</p></div>
+            <!-- Row 5 -->
+            <div class="project-card"><p class="project-card__tech">MySQL</p><h3 class="card__title">Library DBMS</h3><p>ER model, relational schema, and advanced queries.</p></div>
+            <div class="project-card"><p class="project-card__tech">Django + SQLite</p><h3 class="card__title">Student Attendance System</h3><p>Faculty dashboard for attendance tracking.</p></div>
+            <div class="project-card"><p class="project-card__tech">PHP + MySQL</p><h3 class="card__title">Online Voting System</h3><p>A secure web-based voting platform.</p></div>
+            <!-- Row 6 -->
+            <div class="project-card"><p class="project-card__tech">React + API</p><h3 class="card__title">Weather Dashboard</h3><p>Live weather search using OpenWeather API.</p></div>
+            <div class="project-card"><p class="project-card__tech">React + Firebase</p><h3 class="card__title">Quiz App</h3><p>Real-time quiz system with score tracking.</p></div>
+            <div class="project-card"><p class="project-card__tech">Node.js + MongoDB</p><h3 class="card__title">Music Playlist Manager</h3><p>CRUD app for managing playlists.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   6. EDUCATION SECTION
+   ========================================================================== -->
+<section id="education" class="section--light">
+    <div class="container reveal">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="timeline-item__title">B.Tech in Computer Science</h3>
+                <p class="timeline-item__subtitle">MMDU, Mullana (Pursuing)</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-item__title">Class XII (CBSE)</h3>
+                <p class="timeline-item__subtitle">Police DAV Public School – 67.2% (2023)</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-item__title">Class X (CBSE)</h3>
+                <p class="timeline-item__subtitle">St. Joseph School – 89.2% (2021)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   7. LEADERSHIP & ACHIEVEMENTS
+   ========================================================================== -->
+<section id="leadership" style="background-color: var(--color-background-dark);">
+    <div class="container reveal">
+        <h2 class="section-title" style="color: white;">Leadership & Achievements</h2>
+        <div class="card-grid">
+            <div class="project-card">
+                <h3 class="card__title">Leadership Roles</h3>
+                <ul class="card__list">
+                    <li><strong>Secretary</strong> – PROTO-X-VISION (MMDU)</li>
+                    <li><strong>Member</strong> – Student Placement Activity Committee</li>
+                    <li><strong>Member</strong> – E-Cell (MMDU)</li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3 class="card__title">Key Achievements</h3>
+                <ul class="card__list">
+                    <li>🏏 U-19 Inter-District Baseball Player</li>
+                    <li>🏆 Active in hackathons & coding contests</li>
+                    <li>🤝 College event volunteer and cultural contributor</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   8. HOBBIES & INTERESTS
+   ========================================================================== -->
+<section id="hobbies" class="section--light">
+    <div class="container reveal">
+        <h2 class="section-title">Hobbies & Interests</h2>
+        <div class="card-grid">
+            <div class="card"><h3 class="card__title">Sports & Tech</h3><ul class="card__list"><li>Baseball & Fitness</li><li>Public Speaking & Debates</li><li>Hackathons & Coding Contests</li></ul></div>
+            <div class="card"><h3 class="card__title">Community</h3><ul class="card__list"><li>Volunteering in college fests</li><li>Outreach Programs</li></ul></div>
+            <div class="card"><h3 class="card__title">Creative Interests</h3><ul class="card__list"><li>Listening to Music</li><li>Reading Fiction & Self-Development Books</li></ul></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+   9. CONTACT SECTION
+   ========================================================================== -->
+<section id="contact" style="background-color: var(--color-background-dark);">
+    <div class="container reveal">
+        <h2 class="section-title" style="color: white;">Get In Touch</h2>
+        <div class="contact-form-container">
+            <form action="{% url 'contact_submit' %}" method="post" class="contact-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" id="name" name="name" class="form-input" placeholder=" " required />
+                    <label for="name" class="form-label">Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" class="form-input" placeholder=" " required />
+                    <label for="email" class="form-label">Email</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="4" class="form-input" placeholder=" " required></textarea>
+                    <label for="message" class="form-label">Message</label>
+                </div>
+                <button type="submit" class="btn--submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
